@@ -1,0 +1,6 @@
+// Twilio API credentials
+module.exports = {
+    accountSid:'CHANGE_ME',
+    authToken:'CHANGE_ME',
+    testNumber:'CHANGE_ME'
+};

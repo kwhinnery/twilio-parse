@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "_default": {
+            "link": "CHANGE_TO_APP_NAME"
+        }, 
+        "CHANGE_TO_APP_NAME": {
+            "applicationId": "CHANGE_TO_PARSE_APP_ID", 
+            "masterKey": "CHANGE_TO_PARSE_APP_MASTER_KEY"
+        }
+    }
+}
