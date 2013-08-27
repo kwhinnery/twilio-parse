@@ -19,6 +19,26 @@ initializer.RestClient = RestClient;
 initializer.Capability = require('cloud/twilio/Capability');
 initializer.TwimlResponse = require('cloud/twilio/TwimlResponse');
 
+// Parse legacy shim
+// -----------------
+var defaultClient;
+
+// Create a default REST client to use with the shim
+initializer.initialize = function(sid, tkn) {
+    defaultClient = new RestClient(sid, tkn);
+};
+
+// Shim sendSMS to go to the node.js version
+initializer.sendSMS = function(args, callbacks) {
+    defaultClient.sendSms(args, function(err, data) {
+        if (err && callbacks.error) {
+            callbacks.error.call(defaultClient, data);
+        } else {
+            callbacks.success && callbacks.success.call(defaultClient, data);
+        }
+    });
+};
+
 /**
  Utility function to validate an incoming request is indeed from Twilio
 
